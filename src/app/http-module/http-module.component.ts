@@ -60,7 +60,7 @@ export class HttpModuleComponent implements OnInit {
             this.postsArray.push(responseData[i].country);
           }
 
-          return this.postsArray;
+          return this.postsArray.sort();
         })
       )
       .subscribe(data => {

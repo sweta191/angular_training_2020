@@ -14,7 +14,8 @@ export class CovidResultComponent implements OnInit {
     private http: HttpClient,
     private router: Router
   ) {}
-
+  flag;
+  country_flag;
   country_name;
   infected_people_no;
   no_recovered;
@@ -34,8 +35,10 @@ export class CovidResultComponent implements OnInit {
 
       .subscribe(responseData => {
         this.country_name = Object.values(responseData)[0];
-        this.infected_people_no = Object.values(responseData)[7];
-        this.no_recovered = Object.values(responseData)[6];
+        this.infected_people_no = Object.values(responseData)[8];
+        this.no_recovered = Object.values(responseData)[7];
+        this.country_flag = Object.values(Object.values(responseData)[1])[1];
+        this.flag = this.country_flag.toLowerCase();
       });
   }
 }

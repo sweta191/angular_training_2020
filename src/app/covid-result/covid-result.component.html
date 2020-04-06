@@ -1,17 +1,29 @@
 <!-- <p>{{ route_var }}</p>
+<p>{{ flag }}there will be the flag</p>
 <div>{{ country_name }}</div>
 <div>{{ infected_people_no }}</div>
 <div>{{ no_recovered }}</div> -->
+
+<link
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css"
+  rel="stylesheet"
+/>
 <table class="table table-dark">
   <thead>
     <tr>
+      <th scope="col">Country flag</th>
       <th scope="col">Country Name</th>
-      <th scope="col">Infected no of people</th>
+      <th scope="col">Active no of people</th>
       <th scope="col">No of people recovered</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td class="flag-icon-background flag-icon-{{ flag }}"></td>
       <td>{{ country_name }}</td>
       <td>{{ infected_people_no }}</td>
       <td>{{ no_recovered }}</td>
