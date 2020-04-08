@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 @Component({
@@ -10,7 +11,14 @@ import { map } from 'rxjs/operators';
 export class HttpModuleComponent implements OnInit {
   loadedPost: any = [];
   postsArray = [];
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'nl']);
+    translate.setDefaultLang('en');
+  }
 
   ngOnInit() {
     this.fetchPost();
@@ -19,6 +27,9 @@ export class HttpModuleComponent implements OnInit {
   selectChangeHandler(event) {
     console.log(event.target.value);
     this.country_name = event.target.value;
+  }
+  switchLang(lang: string) {
+    this.translate.use(lang);
   }
 
   gotoPage() {

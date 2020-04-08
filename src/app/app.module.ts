@@ -9,9 +9,11 @@ import { ObservablesComponent } from './observables/observables.component';
 import { PipeComponent } from './pipe/pipe.component';
 import { ShortenPipe } from './pipe/shorten.pipe';
 import { ReversePipe } from './pipe/reverse.pipe';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModuleComponent } from './http-module/http-module.component';
 import { Routes, RouterModule, Router } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CovidResultComponent } from './covid-result/covid-result.component';
 
 const appRoutes: Routes = [
@@ -36,9 +38,20 @@ const appRoutes: Routes = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+// AOT compilation support
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

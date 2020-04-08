@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 @Component({
@@ -12,8 +13,12 @@ export class CovidResultComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private router: Router
-  ) {}
+    private router: Router,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'nl']);
+    translate.setDefaultLang('en');
+  }
   flag;
   country_flag;
   country_name;

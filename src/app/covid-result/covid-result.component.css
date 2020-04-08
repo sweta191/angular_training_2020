@@ -2,3 +2,9 @@
   color: white;
   background-color: #286090;
 }
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300;1,400&display=swap");
+/* Font Family */
+html,
+table {
+  font-family: "Open Sans", sans-serif;
+}
